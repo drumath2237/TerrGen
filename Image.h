@@ -8,7 +8,7 @@ namespace TerrGen {
 
     Color(int r_, int g_, int b_):r(r_),g(g_),b(b_){}
     Color():r(0),g(0),b(0){}
-    Color(int c):r(c),g(0),b(0){}
+    Color(int c):r(c),g(c),b(c){}
   };
   
   struct Image {
