@@ -87,15 +87,15 @@ namespace TerrGen {
     double grid3_dot = dot(grid3_grad, grid3_dist);
     double grid4_dot = dot(grid4_grad, grid4_dist);
 
-    double res = v*( u*grid1_dot + (1.0-u)*grid2_dot )
-                 + (1.0-v)*( u*grid3_dot + (1.0-u)*grid4_dot );
+    double res = (1.-v)*( u*grid2_dot + (1.0-u)*grid1_dot )
+                 + v*( u*grid4_dot + (1.0-u)*grid3_dot );
 
     return res;
   }
 
   Vector2 PerlinNoise::GetGradVec(int gridx, int gridy) {
-    int x = gridx % (grid_count+1);
-    int y = gridy % (grid_count+1);
+    int x = fmod( gridx, (double)(grid_count+1) );
+    int y = fmod( gridy, (double)(grid_count+1) );
 
     return grad_vecs[x+y*(grid_count+1)];
   }

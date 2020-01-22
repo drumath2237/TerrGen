@@ -43,8 +43,8 @@ namespace TerrGen {
   }
 
   Biome TerrainGenerator::JudgeBiome(double value) {
-    double water_max_range = -0.5;
-    double sand_max_range = 0.3;
+    double water_max_range = -0.23;
+    double sand_max_range = 0.2;
     double grass_max_range = 1.0;
 
     if(value < water_max_range) {
@@ -63,15 +63,21 @@ namespace TerrGen {
       double x = (double)i*(double)noise.grid_count/(double)img.w;
       double y = (double)j*(double)noise.grid_count/(double)img.h;
 
+      double noise_value = noise.Noise(x,y);
+
+      // std::cout << noise_value << std::endl;
+
+      img.SetPixel(i,j, Color((noise_value+1.2)*106.25) );
+
       switch(JudgeBiome(noise.Noise(x,y))){
         case Water:
-          img.SetPixel(i,j, Color(0,0,255));
+          img.SetPixel(i,j, Color(0,128,150));
           break;
         case Sand:
           img.SetPixel(i,j,Color(240,221,195));
           break;
         case Grass:
-          img.SetPixel(i,j,Color(0,255,0));
+          img.SetPixel(i,j,Color(0,128,0));
           break;
       }
     }

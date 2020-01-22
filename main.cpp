@@ -6,7 +6,7 @@
 using namespace std;
 
 int main(int argc, const char** argv) {
-  string seed = "testseed";
+  string seed = "test";
   TerrGen::TerrainGenerator gen = TerrGen::TerrainGenerator(seed);
   gen.RenderTerrain();
   return 0;

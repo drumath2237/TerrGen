@@ -38,7 +38,7 @@ namespace TerrGen {
       for(int y=0; y<h; y++) for(int x=0; x<w; x++) {
         file << GetPixel(x,y).r << " "
              << GetPixel(x,y).g << " "
-             << GetPixel(x,y).b << " "
+             << GetPixel(x,y).b
              << std::endl;
       }
     }
