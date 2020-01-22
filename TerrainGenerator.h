@@ -34,11 +34,12 @@ namespace TerrGen {
     return res;
   }
 
-  TerrainGenerator::TerrainGenerator(std::string seed_):
-  seed(seed_),
-  noise(PerlinNoise(SeedConverter(seed_))),
-  img(Image()){
-    std::cout << noise.seed << std::endl;
+  TerrainGenerator::TerrainGenerator(std::string seed_):noise(PerlinNoise(0))
+  {
+    seed = seed_;
+    int s = SeedConverter(seed);
+    noise = PerlinNoise(s, 5);
+    img = Image();
   }
 
   Biome TerrainGenerator::JudgeBiome(double value) {
@@ -59,16 +60,19 @@ namespace TerrGen {
 
   void TerrainGenerator::RenderTerrain() {
     for(int j=0; j<img.h; j++) for(int i=0; i<img.w; i++) {
-      double x = (double)noise.grid_count/(double)img.w;
-      double y = (double)noise.grid_count/(double)img.h;
+      double x = (double)i*(double)noise.grid_count/(double)img.w;
+      double y = (double)j*(double)noise.grid_count/(double)img.h;
 
       switch(JudgeBiome(noise.Noise(x,y))){
         case Water:
           img.SetPixel(i,j, Color(0,0,255));
+          break;
         case Sand:
           img.SetPixel(i,j,Color(240,221,195));
+          break;
         case Grass:
           img.SetPixel(i,j,Color(0,255,0));
+          break;
       }
     }
 

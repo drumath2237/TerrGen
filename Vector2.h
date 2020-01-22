@@ -35,8 +35,8 @@ namespace TerrGen {
       return Vector2(x/v.x, y/v.y);
     }
     Vector2 operator /(double d) const {
-      if(d!=0)
-        exit(1);
+      if(d==0)
+        return Vector2(0,0);
 
       return Vector2(x/d, y/d);
     }

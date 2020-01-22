@@ -26,6 +26,7 @@ namespace TerrGen {
   PerlinNoise::PerlinNoise(int seed_, int count) {
     grid_count = count;
     seed = seed_;
+    grad_vecs = std::vector<Vector2>();
     
     std::mt19937 engine(seed);
     std::uniform_real_distribution<> dist(0.0, 2*PI);
@@ -47,8 +48,8 @@ namespace TerrGen {
     }
   }
 
-  PerlinNoise::PerlinNoise(int seed) {
-    PerlinNoise(seed, 5);
+  PerlinNoise::PerlinNoise(int seed_) {
+    PerlinNoise(seed_, 5);
   }
 
   // returns noise in [-1.0, 1.0]

@@ -29,7 +29,7 @@ namespace TerrGen {
     }
 
     void ppm_out(std::string filename) const {
-      std::fstream file(filename);
+      std::ofstream file(filename);
 
       file << "P3" << std::endl;
       file << w << " " << h << std::endl;
