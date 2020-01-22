@@ -47,8 +47,26 @@ namespace TerrGen {
     if(value < sand_max_range) {
       return Sand;
     }
-    if(value < grass_max_range) {
+    else {
       return Grass;
     }
+  }
+
+  void TerrainGenerator::RenderTerrain() {
+    for(int j=0; j<img.h; j++) for(int i=0; i<img.w; i++) {
+      double x = (double)noise.grid_count/(double)img.w;
+      double y = (double)noise.grid_count/(double)img.h;
+
+      switch(JudgeBiome(noise.Noise(x,y))){
+        case Water:
+          img.SetPixel(i,j, Color(0,0,255));
+        case Sand:
+          img.SetPixel(i,j,Color(240,221,195));
+        case Grass:
+          img.SetPixel(i,j,Color(0,255,0));
+      }
+    }
+
+    img.ppm_out(seed);
   }
 };
