@@ -30,6 +30,13 @@ namespace TerrGen {
     std::mt19937 engine(seed);
     std::uniform_real_distribution<> dist(0.0, 2*PI);
 
+    // e.g. 5 grids
+    // 0-----1-----2-----3-----4-----5
+    // |     |     |     |     |     |
+    // |     |     |     |     |     |
+    // 6-----7-----8-----9-----10----11
+    // |     |     |     |     |     |
+
     for(int y=0; y<grid_count+1; y++) for(int x=0; x<grid_count+1; x++) {
       grad_vecs.push_back(
         Vector2(
@@ -85,10 +92,10 @@ namespace TerrGen {
   }
 
   Vector2 PerlinNoise::GetGradVec(int gridx, int gridy) {
-    int x = gridx % grid_count;
-    int y = gridy % grid_count;
+    int x = gridx % (grid_count+1);
+    int y = gridy % (grid_count+1);
 
-    return grad_vecs[x+y*grid_count];
+    return grad_vecs[x+y*(grid_count+1)];
   }
 
   Vector2 PerlinNoise::GetGradVec(Vector2 v) {
