@@ -1,0 +1,7 @@
+[
+{
+  "directory": "d:/kaitoFolder/programs/terrain gen/build",
+  "command": "C:\\PROGRA~1\\LLVM\\bin\\clang-cl.exe  /nologo -TP   /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1   /FoCMakeFiles\\TerrGen.dir\\main.cpp.obj /FdTARGET_COMPILE_PDB -c \"D:\\kaitoFolder\\programs\\terrain gen\\main.cpp\"",
+  "file": "D:/kaitoFolder/programs/terrain gen/main.cpp"
+}
+]
