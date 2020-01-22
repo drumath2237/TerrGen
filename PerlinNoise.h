@@ -51,6 +51,7 @@ namespace TerrGen {
     PerlinNoise(seed, 5);
   }
 
+  // returns noise in [-1.0, 1.0]
   double PerlinNoise::Noise(double x, double y) {
     // 1------2
     // |      |
